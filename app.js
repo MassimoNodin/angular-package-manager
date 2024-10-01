@@ -8,7 +8,6 @@ const session = require('express-session');
 const Driver = require('./models/driver');
 const { incrementCRUD, db } = require('./analytics.js');
 const Package = require('./models/package');
-const pdmaRoutes = require('./pdma.js');
 const pdmaAPIRoutes = require('./pdma_api.js');
 
 const print = console.log;
@@ -44,18 +43,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.get('/', async function (req, res) {
-  fileName = VIEWS_PATH + "index.html";
-  let driverAmount = await Driver.countDocuments();
-  let packageAmount = await Package.countDocuments();
-  res.render(fileName, { "driverAmount": driverAmount, "packageAmount": packageAmount });
-});
-
-app.get('/login', async function (req, res) {
-  fileName = VIEWS_PATH + "login.html";
-  res.render(fileName);
-});
-
 app.post('/login', async function (req, res) {
   let username = req.body.username;
   let password = req.body.password;
@@ -73,11 +60,6 @@ app.post('/login', async function (req, res) {
       });
     }
   });
-});
-
-app.get('/signup', async function (req, res) {
-  fileName = VIEWS_PATH + "signup.html";
-  res.render(fileName);
 });
 
 app.post('/signup', async function (req, res) {
@@ -150,13 +132,6 @@ app.use(async (req, res, next) => {
   next();
 })
 
-app.get('/stats', async function (req, res) {
-  let fileName = VIEWS_PATH + "stats.html";
-  let data = (await db.collection('a2-analytics').doc("stats").get()).data();
-  res.render(fileName, {'insert': data.insert, 'update': data.update, 'Delete': data.delete, 'retrieve': data.retrieve});
-});
-
-app.use('/33892962/Massimo', pdmaRoutes);
 app.use('/33892962/Massimo/api/v1', pdmaAPIRoutes);
 
 app.get('*', function (req, res) {
