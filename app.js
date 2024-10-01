@@ -134,11 +134,6 @@ app.use(async (req, res, next) => {
 
 app.use('/33892962/Massimo/api/v1', pdmaAPIRoutes);
 
-app.get('*', function (req, res) {
-  fileName = VIEWS_PATH + "404.html";
-  res.render(fileName);
-});
-
 app.listen(PORT_NUMBER, () => {
   print(`listening on port ${PORT_NUMBER}`);
 });
