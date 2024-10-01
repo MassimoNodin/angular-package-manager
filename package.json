@@ -1,0 +1,26 @@
+{
+  "name": "assignment-1",
+  "version": "1.0.0",
+  "description": "Assigment 1 for FIT2095 Full Stack Development",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.infotech.monash.edu/fit2095/fit2095-s2-2024/projects/mnod0001/Assignment-1.git"
+  },
+  "author": "Massimo Nodin",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "firebase-admin": "^12.4.0",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.4",
+    "n": "^9.2.3",
+    "nodemon": "^3.1.4"
+  }
+}
