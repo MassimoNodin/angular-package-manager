@@ -1,1 +1,51 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" style="height: 8%; border-bottom-style: solid; border-color: rgba(0, 0, 0, 0.09); margin-bottom: 20px;">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/33892962/Massimo/drivers/add">Add Driver</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/33892962/Massimo/drivers">List Drivers</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/33892962/Massimo/drivers/list-department">List Drivers/Department</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/33892962/Massimo/drivers/delete">Delete Drivers</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/33892962/Massimo/packages/add">Add Packages</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/33892962/Massimo/packages">List Packages</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/33892962/Massimo/packages/delete">Delete Packages</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/signup">Sign Up</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/stats">Stats</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<script>
+    var url = window.location.href;
+    var navbarElems = document.getElementsByClassName("nav-link");
+    for (var i = 0; i < navbarElems.length; i++) {
+        if (navbarElems[i].href == url) {
+            navbarElems[i].classList.add('active');
+            navbarElems[i].innerHTML = "<b>" + navbarElems[i].innerHTML + "</b>";
+        } 
+    }
+</script>
