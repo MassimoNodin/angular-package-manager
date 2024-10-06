@@ -77,7 +77,7 @@ app.post("/33892962/Massimo/api/v1/login", async function (req, res) {
   let password = req.body.password;
   await db.collection('users').where('password', '==', password).where('username', '==', username).get().then(snapshot => {
       if (snapshot.empty) {
-        res.json({"error": "Invalid username or password"});
+        res.status(401).json({"error": "Invalid username or password"});
       } else {
         req.session.save(() => {
           req.session.logged_in = true;
@@ -96,26 +96,24 @@ app.get("/33892962/Massimo/api/v1/driverspackages", async function (req, res) {
   res.json({"drivers": drivers.length, "packages": packages.length});
 });
 
+app.get("/33892962/Massimo/api/v1/authenticated", async function (req, res) {
+  if (req.session.user) {
+    res.json({ "authenticated": true });
+  } else {
+    res.json({ "authenticated": false });
+  }
+});
+
 app.use(async (req, res, next) => {
   if (req.path === "/33892962/Massimo/api/v1/authenticated") {
     return next();
   }
 
   if (!req.session.user) {
-    console.log("test2");
     res.status(401).json({ "error": "You are not logged in" });
     return;
   }
   next();
-});
-
-app.get("/33892962/Massimo/api/v1/authenticated", async function (req, res) {
-  console.log("test1");
-  if (req.session.user) {
-    res.json({ "authenticated": true });
-  } else {
-    res.json({ "authenticated": false });
-  }
 });
 
 app.use('/33892962/Massimo/api/v1', pdmaAPIRoutes);
