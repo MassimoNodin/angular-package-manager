@@ -54,6 +54,7 @@ router.put("/drivers", async function (req, res) {
     try {
         await Driver.findOneAndUpdate({_id: mongoId}, {driver_licence: driver_licence, driver_department: driver_department});
         res.json({"status": "Driver updated Successfully"});
+        await incrementCRUD(2);
     } catch (error) {
         res.json({"error": "ID not found"});
     }
