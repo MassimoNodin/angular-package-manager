@@ -12,19 +12,20 @@ import { UpdatePackageComponent } from './update-package/update-package.componen
 import { StatisticsComponent } from './statistics/statistics.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
     { path: '', component: IndexComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    { path: 'drivers', component: ListDriverComponent},
-    { path: 'drivers/add', component: AddDriverComponent },
-    { path: 'drivers/update', component: UpdateDriverComponent },
-    { path: 'drivers/delete', component: DeleteDriverComponent },
-    { path: 'packages', component: ListPackageComponent},
-    { path: 'packages/add', component: AddPackageComponent },
-    { path: 'packages/update', component: UpdatePackageComponent },
-    { path: 'packages/delete', component: DeletePackageComponent },
-    { path: 'stats', component: StatisticsComponent },
+    { path: 'drivers', component: ListDriverComponent, canActivate: [authGuard] },
+    { path: 'drivers/add', component: AddDriverComponent, canActivate: [authGuard] },
+    { path: 'drivers/update', component: UpdateDriverComponent, canActivate: [authGuard] },
+    { path: 'drivers/delete', component: DeleteDriverComponent, canActivate: [authGuard] },
+    { path: 'packages', component: ListPackageComponent, canActivate: [authGuard] },
+    { path: 'packages/add', component: AddPackageComponent, canActivate: [authGuard] },
+    { path: 'packages/update', component: UpdatePackageComponent, canActivate: [authGuard] },
+    { path: 'packages/delete', component: DeletePackageComponent, canActivate: [authGuard] },
+    { path: 'stats', component: StatisticsComponent, canActivate: [authGuard] },
     { path: '**', component: PagenotfoundComponent }
 ];
