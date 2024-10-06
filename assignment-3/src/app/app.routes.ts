@@ -13,6 +13,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { authGuard } from './auth.guard';
+import { InvaliddataComponent } from './invaliddata/invaliddata.component';
 
 export const routes: Routes = [
     { path: '', component: IndexComponent },
@@ -27,5 +28,6 @@ export const routes: Routes = [
     { path: 'packages/update', component: UpdatePackageComponent, canActivate: [authGuard] },
     { path: 'packages/delete', component: DeletePackageComponent, canActivate: [authGuard] },
     { path: 'stats', component: StatisticsComponent, canActivate: [authGuard] },
+    { path: 'invalid', component: InvaliddataComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
