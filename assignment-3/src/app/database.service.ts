@@ -70,4 +70,12 @@ export class DatabaseService {
   getStatistics() {
     return this.http.get(URL_BACKEND+'/statistics');
   }
+
+  login(username: string, password: string) {
+    return this.http.post(URL_BACKEND+'/login', { username, password });
+  }
+
+  signup(username: string, password: string) {
+    return this.http.post(URL_BACKEND+'/signup', { username, password });
+  }
 }
