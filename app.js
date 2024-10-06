@@ -9,6 +9,7 @@ const Driver = require('./models/driver');
 const { incrementCRUD, db } = require('./analytics.js');
 const Package = require('./models/package');
 const pdmaAPIRoutes = require('./pdma_api.js');
+const cors = require('cors');
 
 const print = console.log;
 const VIEWS_PATH = path.join(__dirname, "/views/");
@@ -36,51 +37,20 @@ app.use(express.static('images'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
+const corsOptions = {
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 app.use(session({
-  secret: '2095-ASSIGNMENT-2',
+  secret: '2095-ASSIGNMENT-3',
   cookie: {},
   resave: false,
   saveUninitialized: true
 }));
-
-app.post('/login', async function (req, res) {
-  let username = req.body.username;
-  let password = req.body.password;
-
-  await db.collection('users').where('password', '==', password).where('username', '==', username).get().then(snapshot => {
-    if (snapshot.empty) {
-      res.render(VIEWS_PATH + "invalid.html");
-    } else {
-      req.session.save(() => {
-        req.session.logged_in = true;
-        req.session.user = {
-          username: username
-        };
-        res.redirect('/');
-      });
-    }
-  });
-});
-
-app.post('/signup', async function (req, res) {
-  let username = req.body.username;
-  let password = req.body.password;
-  if (username.length < 6 || !/^[a-zA-Z0-9]+$/.test(username)) res.redirect('/invalid')
-  else if (password.length < 5 || password.length > 10) res.redirect('/invalid')
-  else {
-    await db.collection('users').add({
-      username: username,
-      password: password
-    });
-    req.session.save(() => {
-      req.session.logged_in = true;
-      req.session.user = {
-        username: username
-      };
-      res.redirect('/');
-    });
-  }
-});
 
 app.post("/33892962/Massimo/api/v1/signup", async function (req, res) {
   let username = req.body.username;
@@ -120,17 +90,33 @@ app.post("/33892962/Massimo/api/v1/login", async function (req, res) {
     });
 });
 
+app.get("/33892962/Massimo/api/v1/driverspackages", async function (req, res) {
+  let drivers = await Driver.find();
+  let packages = await Package.find();
+  res.json({"drivers": drivers.length, "packages": packages.length});
+});
+
 app.use(async (req, res, next) => {
+  if (req.path === "/33892962/Massimo/api/v1/authenticated") {
+    return next();
+  }
+
   if (!req.session.user) {
-    if (req.url.startsWith('/33892962/Massimo/api/v1')) {
-      res.status(401).json({ "error": "You are not logged in" });
-      return;
-    }
-    res.redirect('/login');
-    return
+    console.log("test2");
+    res.status(401).json({ "error": "You are not logged in" });
+    return;
   }
   next();
-})
+});
+
+app.get("/33892962/Massimo/api/v1/authenticated", async function (req, res) {
+  console.log("test1");
+  if (req.session.user) {
+    res.json({ "authenticated": true });
+  } else {
+    res.json({ "authenticated": false });
+  }
+});
 
 app.use('/33892962/Massimo/api/v1', pdmaAPIRoutes);
 
