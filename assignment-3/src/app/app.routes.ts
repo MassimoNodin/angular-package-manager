@@ -10,9 +10,13 @@ import { ListPackageComponent } from './list-package/list-package.component';
 import { UpdateDriverComponent } from './update-driver/update-driver.component';
 import { UpdatePackageComponent } from './update-package/update-package.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 export const routes: Routes = [
     { path: '', component: IndexComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'signup', component: SignupComponent },
     { path: 'drivers', component: ListDriverComponent},
     { path: 'drivers/add', component: AddDriverComponent },
     { path: 'drivers/update', component: UpdateDriverComponent },
@@ -21,6 +25,6 @@ export const routes: Routes = [
     { path: 'packages/add', component: AddPackageComponent },
     { path: 'packages/update', component: UpdatePackageComponent },
     { path: 'packages/delete', component: DeletePackageComponent },
-    { path: 'statistics', component: StatisticsComponent },
+    { path: 'stats', component: StatisticsComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
