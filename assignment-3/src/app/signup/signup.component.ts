@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { DatabaseService } from '../database.service';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
