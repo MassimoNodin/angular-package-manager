@@ -75,7 +75,7 @@ export class DatabaseService {
     return this.http.post(URL_BACKEND+'/login', { username, password });
   }
 
-  signup(username: string, password: string) {
+  signUp(username: string, password: string) {
     return this.http.post(URL_BACKEND+'/signup', { username, password });
   }
 }
