@@ -10,8 +10,7 @@ export const authGuard: CanActivateFn = async (route, state) => {
 
   try {
     const isAuthenticated = await lastValueFrom(authService.isAuthenticated()); // Convert observable to promise
-    console.log('isAuthenticated', isAuthenticated);
-    if (isAuthenticated === true) {
+    if (isAuthenticated == true) {
       return true;
     } else {
       router.navigate(['/login']);

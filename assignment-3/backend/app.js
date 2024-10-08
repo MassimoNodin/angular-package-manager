@@ -74,13 +74,11 @@ app.post("/33892962/Massimo/api/v1/login", async function (req, res) {
       } else {
         req.session.save((err) => {
           if (err) {
-            console.log("Error saving session:", err);
             res.status(500).json({ "error": "Session not saved" });
           } else {
             req.session.logged_in = true;
             req.session.user = { username: username };
             res.json({ "status": "Logged in" });
-          console.log(req.session.user);
           }
         });
       }
@@ -94,11 +92,10 @@ app.get("/33892962/Massimo/api/v1/driverspackages", async function (req, res) {
 });
 
 app.get("/33892962/Massimo/api/v1/authenticated", async function (req, res) {
-  console.log(req.session.user);
   if (req.session.user) {
-    res.json({ "authenticated": true });
+    res.json(true);
   } else {
-    res.json({ "authenticated": false });
+    res.json(false);
   }
 });
 
