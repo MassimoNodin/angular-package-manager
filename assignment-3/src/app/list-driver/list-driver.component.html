@@ -1,1 +1,24 @@
-<p>list-driver works!</p>
+<table class="table" style="margin-top: 0px;" *ngIf="!loading">
+    <thead class="table">
+        <tr>
+            <th>Driver ID</th>
+            <th>Driver Name</th>
+            <th>Department</th>
+            <th>Driver License</th>
+            <th>is Active</th>
+            <th>Creation Date</th>
+            <th>Delete Driver</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let driver of drivers">
+            <td>{{ driver.driver_id }}</td>
+            <td>{{ driver.driver_name }}</td>
+            <td>{{ driver.driver_department }}</td>
+            <td>{{ driver.driver_licence }}</td>
+            <td>{{ driver.driver_isActive}}</td>
+            <td>{{ driver.driver_createdAt }}</td>
+            <td><button class="btn btn-danger" (click)="deleteDriver(driver.driver_id)" style="margin-bottom: 0;">Delete</button></td>
+        </tr>
+    </tbody>
+</table>

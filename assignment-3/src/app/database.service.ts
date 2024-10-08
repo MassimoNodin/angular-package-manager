@@ -40,8 +40,7 @@ export class DatabaseService {
 
   deleteDriver(id: number) {
     return this.http.delete(URL_BACKEND+'/drivers/delete', {
-      ...httpOptions,
-      body: { driverId: id }
+      body: { driver_id: id }
     });
   }
 
