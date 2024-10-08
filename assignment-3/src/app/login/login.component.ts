@@ -24,7 +24,6 @@ export class LoginComponent {
   login() {
     firstValueFrom(this.databaseService.login(this.loginInformation.username, this.loginInformation.password))
       .then((response: any) => {
-        console.log(response.status);
         if (response.status == "Logged in") {
           this.router.navigate(['/']);
           return;
