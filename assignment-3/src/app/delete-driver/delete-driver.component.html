@@ -1,1 +1,16 @@
-<p>delete-driver works!</p>
+<div style="height: 70%; display: flex; justify-content: center; align-items: center;" *ngIf="!loading">
+    <form class="card"
+        style="padding: 20px; width: 400px; display: flex; flex-direction: column;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Delete Driver</h2>
+        <div class="mb-3">
+            <label class="form-label">Driver</label>
+            <select class="form-select" aria-label="Default select example" name="driverID" [(ngModel)]="driver_id">
+                <option *ngFor="let driver of drivers" value="{{driver.driver_id}}">
+                    {{ driver.driver_id}}
+                </option>
+            </select>
+        </div>
+
+        <button (click)="deleteDriver()" class="btn btn-primary">Submit</button>
+    </form>
+</div>
