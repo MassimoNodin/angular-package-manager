@@ -9,7 +9,6 @@ const Driver = require('./models/driver');
 const { incrementCRUD, db } = require('./analytics.js');
 const Package = require('./models/package');
 const pdmaAPIRoutes = require('./pdma_api.js');
-const cors = require('cors');
 
 const print = console.log;
 const VIEWS_PATH = path.join(__dirname, "/views/");
@@ -37,13 +36,7 @@ app.use(express.static('images'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
-const corsOptions = {
-  origin: 'http://localhost:4200',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
+app.use(express.static('./dist/assignment-3/browser'));
 
 app.use(session({
   secret: '2095-ASSIGNMENT-3',
