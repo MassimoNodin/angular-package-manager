@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 const httpOptions = {
+  withCredentials: true,
   headers: new HttpHeaders({ "Content-Type": "application/json" }),
 };
 const URL_BACKEND = "http://localhost:8080/33892962/Massimo/api/v1";
