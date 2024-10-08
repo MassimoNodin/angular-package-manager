@@ -69,7 +69,7 @@ export class DatabaseService {
   }
 
   getStatistics() {
-    return this.http.get(URL_BACKEND+'/statistics');
+    return this.http.get(URL_BACKEND+'/stats');
   }
 
   login(username: string, password: string) {

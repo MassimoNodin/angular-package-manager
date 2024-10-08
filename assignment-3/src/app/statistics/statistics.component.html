@@ -1,1 +1,30 @@
-<p>statistics works!</p>
+<div style="display: flex; width: 100%; align-items: center; flex-direction: column;">
+    <h1>MongoDB Stats</h1>
+    <table class="table"
+        style="margin-top: 0px; width: 400px; text-align: center; border-style: solid; border-width: 2px; border-radius: 5px;">
+        <thead class="table">
+            <tr>
+                <th>Operation</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="vertical-align: middle;">
+                <td>Insert</td>
+                <td> {{ this.stats.insert }} </td>
+            </tr>
+            <tr style="vertical-align: middle;">
+                <td>Retrieve</td>
+                <td> {{ this.stats.retrieve }} </td>
+            </tr>
+            <tr style="vertical-align: middle;">
+                <td>Update</td>
+                <td> {{ this.stats.update }} </td>
+            </tr>
+            <tr style="vertical-align: middle;">
+                <td>Delete</td>
+                <td> {{ this.stats.delete }} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
