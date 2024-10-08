@@ -1,1 +1,16 @@
-<p>delete-package works!</p>
+<div style="height: 70%; display: flex; justify-content: center; align-items: center;" *ngIf="!loading">
+    <form class="card"
+        style="padding: 20px; width: 400px; display: flex; flex-direction: column;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Delete Package</h2>
+        <div class="mb-3">
+            <label class="form-label">Package</label>
+            <select class="form-select" aria-label="Default select example" name="packageID" [(ngModel)]="package_id">
+                <option *ngFor="let package of packages" value="{{package.package_id}}">
+                    {{ package.package_id}}
+                </option>
+            </select>
+        </div>
+
+        <button (click)="deletePackage()" class="btn btn-primary">Submit</button>
+    </form>
+</div>
