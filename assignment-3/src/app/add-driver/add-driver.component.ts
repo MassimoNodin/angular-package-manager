@@ -24,7 +24,6 @@ export class AddDriverComponent {
 
   addDriver() {
     this.databaseService.addDriver(this.driverInformation).subscribe((response: any) => {
-      console.log(response)
       if (!response.error) {
         this.router.navigate(['/']);
         return;

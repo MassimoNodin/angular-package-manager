@@ -31,7 +31,7 @@ let packageSchema = mongoose.Schema({
             validator: function (weightValue) {
                 return weightValue > 0;
             },
-            message: 'Age should be a number between 10 and 110'
+            message: 'Weight should be a positive number'
         }
     },
     package_destination: {
@@ -39,7 +39,7 @@ let packageSchema = mongoose.Schema({
         required: true,
         validate: {
             validator: function (nameValue) {
-                return /^[a-z0-9]+$/.test(nameValue) && nameValue.length >= 3 && nameValue.length <= 15;
+                return /^[a-zA-Z0-9]+$/.test(nameValue) && nameValue.length >= 3 && nameValue.length <= 15;
             },
             message: 'Title should be a string between 3 and 15 alphanumeric characters'
         }
@@ -49,7 +49,7 @@ let packageSchema = mongoose.Schema({
         required: false,
         validate: {
             validator: function (descriptionValue) {
-                return !/^[a-z0-9]+$/.test(descriptionValue) && descriptionValue.length >= 0 && descriptionValue.length <= 30
+                return !/^[a-zA-Z0-9]+$/.test(descriptionValue) && descriptionValue.length >= 0 && descriptionValue.length <= 30
             },
             message: 'Descrption should be a string between 0 and 15 alphanumeric characters'
         }

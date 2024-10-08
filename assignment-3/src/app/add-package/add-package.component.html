@@ -1,1 +1,46 @@
-<p>add-package works!</p>
+<div style="height: 70%; display: flex; justify-content: center; align-items: center;" *ngIf="!loading">
+    <form class="card"
+        style="padding: 20px; width: 400px; display: flex; flex-direction: column;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Add New Package</h2>
+
+        <div class="mb-3">
+            <label class="form-label">Package Title</label>
+            <input class="form-control" type="text" name="packageTitle" placeholder="Enter package title" [(ngModel)]="packageInformation.package_title" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Package Weight</label>
+            <input type="number" min="1" value="1" name="packageWeight" placeholder="Enter package weight" [(ngModel)]="packageInformation.package_weight" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Package Destination</label>
+            <input class="form-control" type="text" name="packageDestination" placeholder="Enter package destination" [(ngModel)]="packageInformation.package_destination" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Package Description (Optional)</label>
+            <input class="form-control" type="text" name="packageDescription" placeholder="Enter package description" [(ngModel)]="packageInformation.package_description" />
+        </div>
+
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="isAllocated" [(ngModel)]="packageInformation.isAllocated">
+                <label class="form-check-label" for="flexCheckChecked">
+                    is Allocated
+                </label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Driver</label>
+            <select class="form-select" aria-label="Default select example" name="driverID" [(ngModel)]="packageInformation.driver_id">
+                <option *ngFor="let driver of drivers" value="{{driver._id}}">
+                    {{ driver.driver_name}}
+                </option>
+            </select>
+        </div>
+
+        <button (click)="addPackage()" class="btn btn-primary">Submit</button>
+    </form>
+</div>

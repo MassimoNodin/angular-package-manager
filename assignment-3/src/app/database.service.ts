@@ -53,7 +53,7 @@ export class DatabaseService {
   }
 
   addPackage(pkg: any) {
-    return this.http.post(URL_BACKEND+'/packages', pkg);
+    return this.http.post(URL_BACKEND+'/packages/add', pkg);
   }
 
   updatePackage(pkg: any) {

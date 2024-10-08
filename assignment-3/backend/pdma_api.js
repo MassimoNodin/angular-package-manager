@@ -76,7 +76,7 @@ router.post('/packages/add', async function (req, res) {
         res.json({"id": saveResponse._id,"package_id": saveResponse.package_id});
         await incrementCRUD(0);
     } catch (error) {
-        console.log(error);
+        console.log(error)
         res.json({"error": error});
     }
 });
