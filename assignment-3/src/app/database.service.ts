@@ -62,8 +62,7 @@ export class DatabaseService {
 
   deletePackage(id: number) {
     return this.http.delete(URL_BACKEND+'/packages/delete', {
-      ...httpOptions,
-      body: { packageId: id }
+      body: { package_id: id }
     });
   }
 

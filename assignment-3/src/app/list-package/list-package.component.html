@@ -1,1 +1,28 @@
-<p>list-package works!</p>
+<table class="table" style="margin-top: 0px;" *ngIf="!loading">
+    <thead class="table">
+        <tr>
+            <th>Package ID</th>
+            <th>Title</th>
+            <th>Weight</th>
+            <th>Destination</th>
+            <th>Description</th>
+            <th>Creation Date</th>
+            <th>is Allocated</th>
+            <th>Driver ID</th>
+            <th>Delete Package</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let package of packages">
+            <td>{{ package.package_id }}</td>
+            <td>{{ package.package_title }}</td>
+            <td>{{ package.package_weight }}</td>
+            <td>{{ package.package_destination }}</td>
+            <td>{{ package.package_description}}</td>
+            <td>{{ package.package_createdAt }}</td>
+            <td>{{ package.package_isAllocated }}</td>
+            <td>{{ package.driver_id }}</td>
+            <td><button class="btn btn-danger" (click)="deletePackage(package.package_id)" style="margin-bottom: 0;">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
