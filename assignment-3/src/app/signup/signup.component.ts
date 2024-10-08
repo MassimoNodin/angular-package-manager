@@ -24,8 +24,7 @@ export class SignupComponent {
   signUp() {
     firstValueFrom(this.databaseService.signUp(this.loginInformation.username, this.loginInformation.password))
       .then((response: any) => {
-        console.log(response.error);
-        if (response.error) {
+        if (!response.error) {
           this.router.navigate(['/']);
           return;
         }
