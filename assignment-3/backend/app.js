@@ -111,6 +111,11 @@ app.use(async (req, res, next) => {
   next();
 });
 
+app.get("/33892962/Massimo/api/v1/stats", async function (req, res) {
+  let data = (await db.collection('a2-analytics').doc("stats").get()).data();
+  res.json({'insert': data.insert, 'update': data.update, 'Delete': data.delete, 'retrieve': data.retrieve});
+});
+
 app.use('/33892962/Massimo/api/v1', pdmaAPIRoutes);
 
 app.listen(PORT_NUMBER, () => {
