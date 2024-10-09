@@ -1,1 +1,33 @@
-<p>update-driver works!</p>
+<div style="height: 70%; display: flex; justify-content: center; align-items: center;">
+    <form class="card" style="padding: 20px; width: 400px; display: flex; flex-direction: column;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Update Driver</h2>
+
+        <div class="mb-3">
+            <label class="form-label">Driver</label>
+            <select class="form-select" aria-label="Default select example" name="driverID"
+                (change)="updateInformation()" [(ngModel)]="this.driver_index">
+                <option *ngFor="let driver of drivers; index as i" value={{i}}>
+                    {{ driver.driver_name}}
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Driver Department</label>
+            <select class="form-select" aria-label="Default select example" name="driverDepartment"
+                [(ngModel)]="this.driverInformation.driver_department">
+                <option value="food" selected>Food</option>
+                <option value="furniture">Furniture</option>
+                <option value="electronic">Electronic</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Driver License</label>
+            <input class="form-control" type="text" name="driverLicense" placeholder="Enter driver license"
+                [(ngModel)]="this.driverInformation.driver_licence" />
+        </div>
+
+        <button (click)="updateDriver()" class="btn btn-primary">Update Driver</button>
+    </form>
+</div>

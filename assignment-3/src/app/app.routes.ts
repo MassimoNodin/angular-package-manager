@@ -29,5 +29,5 @@ export const routes: Routes = [
     { path: 'packages/delete', component: DeletePackageComponent, canActivate: [authGuard] },
     { path: 'stats', component: StatisticsComponent, canActivate: [authGuard] },
     { path: 'invalid', component: InvaliddataComponent },
-    { path: '**', component: PagenotfoundComponent }
+    { path: '**', component: PagenotfoundComponent, pathMatch: 'full' }
 ];

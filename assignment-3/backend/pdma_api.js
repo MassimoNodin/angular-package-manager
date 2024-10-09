@@ -48,6 +48,7 @@ router.delete('/drivers/delete', async function (req, res) {
 });
 
 router.put("/drivers", async function (req, res) {
+    
     let mongoId = req.body.id;
     let driver_licence = req.body.driver_licence;
     let driver_department = req.body.driver_department;
