@@ -37,7 +37,6 @@ export class UpdateDriverComponent {
 
   updateDriver() {
     this.databaseService.updateDriver(this.driverInformation).subscribe((response: any) => {
-      console.log(response)
       if (!response.error) {
         this.router.navigate(['/drivers']);
         return;

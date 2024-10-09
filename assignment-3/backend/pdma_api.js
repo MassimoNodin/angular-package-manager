@@ -9,7 +9,6 @@ const { incrementCRUD, db } = require('./analytics.js');
 
 const Driver = require('./models/driver');
 const Package = require('./models/package');
-const driver = require("./models/driver");
 
 
 router.post('/drivers/add', async function (req, res) {
@@ -107,6 +106,7 @@ router.put("/packages", async function (req, res) {
         if (package) {
             res.json({"status": "Package updated Successfully"});
             await incrementCRUD(2);
+            return;
         }
         res.json({"error": "ID not found"});
     } catch (error) {
