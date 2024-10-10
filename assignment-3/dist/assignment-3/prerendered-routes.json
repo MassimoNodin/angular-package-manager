@@ -1,0 +1,20 @@
+{
+  "routes": [
+    "/",
+    "/drivers",
+    "/drivers/add",
+    "/drivers/delete",
+    "/drivers/update",
+    "/generative-ai",
+    "/invalid",
+    "/login",
+    "/packages",
+    "/packages/add",
+    "/packages/delete",
+    "/packages/update",
+    "/signup",
+    "/stats",
+    "/text-to-speech",
+    "/translate"
+  ]
+}
