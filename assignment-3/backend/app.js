@@ -9,6 +9,9 @@ const Driver = require('./models/driver');
 const { incrementCRUD, db } = require('./analytics.js');
 const Package = require('./models/package');
 const pdmaAPIRoutes = require('./pdma_api.js');
+const textToSpeech = require("@google-cloud/text-to-speech");
+
+const client = new textToSpeech.TextToSpeechClient();
 
 const print = console.log;
 const VIEWS_PATH = path.join(__dirname, "/views/");
@@ -31,7 +34,7 @@ app.use(express.static("node_modules/bootstrap/dist/css"));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-app.use(express.static('images'));
+app.use(express.static(path.join(__dirname, 'images')));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
