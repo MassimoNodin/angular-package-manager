@@ -5,76 +5,76 @@ const httpOptions = {
   withCredentials: true,
   headers: new HttpHeaders({ "Content-Type": "application/json" }),
 };
-const URL_BACKEND = "http://localhost:8080/33892962/Massimo/api/v1";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseService {
+  private URL_BACKEND = location.origin+"/33892962/Massimo/api/v1";
 
   constructor(private http: HttpClient) {}
 
   isAuthenticated() {
-    return this.http.get(URL_BACKEND+'/authenticated');
+    return this.http.get(this.URL_BACKEND+'/authenticated');
   }
 
   getDrivers() {
-    return this.http.get(URL_BACKEND+'/drivers');
+    return this.http.get(this.URL_BACKEND+'/drivers');
   }
 
   getDriverPackages() {
-    return this.http.get(URL_BACKEND+'/driverspackages');
+    return this.http.get(this.URL_BACKEND+'/driverspackages');
   }
 
   getDriver(id: number) {
-    return this.http.get(URL_BACKEND+'/drivers?id='+id);
+    return this.http.get(this.URL_BACKEND+'/drivers?id='+id);
   }
 
   addDriver(driver: any) {
-    return this.http.post(URL_BACKEND+'/drivers/add', driver);
+    return this.http.post(this.URL_BACKEND+'/drivers/add', driver);
   }
 
   updateDriver(driver: any) {
-    return this.http.put(URL_BACKEND+'/drivers', driver);
+    return this.http.put(this.URL_BACKEND+'/drivers', driver);
   }
 
   deleteDriver(id: number) {
-    return this.http.delete(URL_BACKEND+'/drivers/delete', {
+    return this.http.delete(this.URL_BACKEND+'/drivers/delete', {
       body: { driver_id: id }
     });
   }
 
   getPackages() {
-    return this.http.get(URL_BACKEND+'/packages');
+    return this.http.get(this.URL_BACKEND+'/packages');
   }
 
   getPackage(id: number) {
-    return this.http.get(URL_BACKEND+'/packages?id='+id);
+    return this.http.get(this.URL_BACKEND+'/packages?id='+id);
   }
 
   addPackage(pkg: any) {
-    return this.http.post(URL_BACKEND+'/packages/add', pkg);
+    return this.http.post(this.URL_BACKEND+'/packages/add', pkg);
   }
 
   updatePackage(pkg: any) {
-    return this.http.put(URL_BACKEND+'/packages', pkg);
+    return this.http.put(this.URL_BACKEND+'/packages', pkg);
   }
 
   deletePackage(id: number) {
-    return this.http.delete(URL_BACKEND+'/packages/delete', {
+    return this.http.delete(this.URL_BACKEND+'/packages/delete', {
       body: { package_id: id }
     });
   }
 
   getStatistics() {
-    return this.http.get(URL_BACKEND+'/stats');
+    return this.http.get(this.URL_BACKEND+'/stats');
   }
 
   login(username: string, password: string) {
-    return this.http.post(URL_BACKEND+'/login', { username, password });
+    return this.http.post(this.URL_BACKEND+'/login', { username, password });
   }
 
   signUp(username: string, password: string) {
-    return this.http.post(URL_BACKEND+'/signup', { username, password });
+    return this.http.post(this.URL_BACKEND+'/signup', { username, password });
   }
 }
