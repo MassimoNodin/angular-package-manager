@@ -94,7 +94,7 @@ io.on("connection", socket => {
   });
 
   socket.on("generateText", async data => {
-    let response = await geminiModel.generateContent("Distance between Melbourne and " + data.text + "?");
+    let response = await geminiModel.generateContent("Distance between Melbourne and " + data.text + "? In format 'x km'");
     socket.emit("generateText", { text: response, id: data.id });
   });
 });
