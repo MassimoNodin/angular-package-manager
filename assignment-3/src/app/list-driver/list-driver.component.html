@@ -8,6 +8,7 @@
             <th>is Active</th>
             <th>Creation Date</th>
             <th>Delete Driver</th>
+            <th>Packages</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,29 @@
             <td>{{ driver.driver_isActive}}</td>
             <td>{{ driver.driver_createdAt }}</td>
             <td><button class="btn btn-danger" (click)="deleteDriver(driver.driver_id)" style="margin-bottom: 0;">Delete</button></td>
+            <td>
+                <div type="button" class="dropdown-toggle" data-bs-toggle='dropdown' aria-haspopup="true" aria-expanded="false">Packages</div>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" *ngIf="driver.driver_assigned_packages.length==0">No Packages Assigned</a>
+                <table class="table" style="margin-top: 0px;" *ngIf="driver.driver_assigned_packages.length>0">
+                    <thead class="table">
+                        <tr>
+                            <th>Title</th>
+                            <th>ID</th>
+                            <th>Destination</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let package of driver.driver_assigned_packages">
+                            <td>{{ package.package_title }}</td>
+                            <td>{{ package.package_id }}</td>
+                            <td>{{ package.package_destination }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- <a *ngFor="let package of driver.driver_assigned_packages"  class="dropdown-item">{{ package.package_id }}  |  {{ package.package_title }}</a> -->
+            </div>
+        </td>
         </tr>
     </tbody>
 </table>

@@ -20,6 +20,7 @@ export class ListDriverComponent {
     this.databaseService.getDrivers().subscribe((data) => {
       this.drivers = data;
       this.loading = false;
+      console.log(this.drivers[0])
     });
   }
 
