@@ -16,7 +16,7 @@
         <tr *ngFor="let package of packages">
             <td>{{ package.package_id }}</td>
             <td>{{ package.package_title }}</td>
-            <td>{{ package.package_weight }}</td>
+            <td>{{ package.package_weight | packageWeight }}</td>
             <td>{{ package.package_destination }}</td>
             <td>{{ package.package_description}}</td>
             <td>{{ package.package_createdAt }}</td>

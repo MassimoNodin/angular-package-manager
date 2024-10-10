@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { DatabaseService } from '../database.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PackageWeightPipe } from '../package-weight.pipe';
 
 @Component({
   selector: 'app-list-package',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, PackageWeightPipe],
   templateUrl: './list-package.component.html',
   styleUrl: './list-package.component.css'
 })
