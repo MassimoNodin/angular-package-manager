@@ -62,6 +62,23 @@ io.on("connection", socket => {
       }
       io.sockets.emit("translate",return_data);
   });
+
+  socket.on("textToSpeech", async data => {
+    const request = {
+      input: { text: data.licence },
+      // Select the language and SSML Voice Gender (optional)
+      voice: { languageCode: "en-US", ssmlGender: "NEUTRAL" },
+      // Select the type of audio encoding
+      audioConfig: { audioEncoding: "MP3" },
+    };
+    client.synthesizeSpeech(request, (err, response) => {
+      if (err) {
+        console.error("ERROR:", err);
+        return;
+      }
+      socket.emit("textToSpeech", { audioContent: response.audioContent, id: data.id });
+    });
+  });
 });
 
 app.post("/33892962/Massimo/api/v1/signup", async function (req, res) {

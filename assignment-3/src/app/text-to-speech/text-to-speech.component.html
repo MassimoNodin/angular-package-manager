@@ -1,0 +1,24 @@
+<div style="height: 70%; display: flex; justify-content: center; align-items: center;">
+    <form class="card" style="padding: 20px; width: 1000px; display: flex; flex-direction: column;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Generate Licence Audio</h2>
+        <table class="table" style="margin-top: 0px;" *ngIf="!loading">
+            <thead class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Licence</th>
+                    <th>Licence Audio</th>
+                    <th>Generate Audio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let driver of drivers">
+                    <td>{{ driver.driver_name }}</td>
+                    <td>{{ driver.driver_licence}}</td>
+                    <td id={{driver._id}}></td>
+                    <td><button class="btn btn-primary" (click)="textToSpeech(driver.driver_licence, driver._id)"
+                            style="margin-bottom: 0;">Generate</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
