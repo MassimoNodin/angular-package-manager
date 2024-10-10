@@ -14,15 +14,17 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/text-to-speech": "^5.4.0",
+    "@google-cloud/translate": "^8.5.0",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
-    "express": "^4.19.2",
+    "express": "^4.21.1",
     "express-session": "^1.18.0",
     "firebase-admin": "^12.4.0",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.4",
     "n": "^9.2.3",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "socket.io": "^4.8.0"
   }
 }

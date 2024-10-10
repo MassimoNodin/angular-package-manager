@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { authGuard } from './auth.guard';
 import { InvaliddataComponent } from './invaliddata/invaliddata.component';
+import { TranslateDescriptionComponent } from './translate-description/translate-description.component';
 
 export const routes: Routes = [
     { path: '', component: IndexComponent },
@@ -28,6 +29,7 @@ export const routes: Routes = [
     { path: 'packages/update', component: UpdatePackageComponent, canActivate: [authGuard] },
     { path: 'packages/delete', component: DeletePackageComponent, canActivate: [authGuard] },
     { path: 'stats', component: StatisticsComponent, canActivate: [authGuard] },
+    { path: 'translate', component: TranslateDescriptionComponent, canActivate: [authGuard] },
     { path: 'invalid', component: InvaliddataComponent },
     { path: '**', component: PagenotfoundComponent, pathMatch: 'full' }
 ];

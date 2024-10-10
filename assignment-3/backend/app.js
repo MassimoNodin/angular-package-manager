@@ -10,7 +10,8 @@ const { incrementCRUD, db } = require('./analytics.js');
 const Package = require('./models/package');
 const pdmaAPIRoutes = require('./pdma_api.js');
 const textToSpeech = require("@google-cloud/text-to-speech");
-
+const {Translate} = require('@google-cloud/translate').v2;
+const translate = new Translate();
 const client = new textToSpeech.TextToSpeechClient();
 
 const print = console.log;
@@ -25,7 +26,7 @@ connect().catch((err) => console.log(err));
 
 /**
  * The port number for the server.
- */
+*/
 const PORT_NUMBER = 8080;
 
 let app = express();
@@ -47,6 +48,21 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
+
+const server = require('http').Server(app);
+const io = require("socket.io")(server);
+
+io.on("connection", socket => {
+  socket.on("translate", async data => {
+      let translations = await translate.translate(data.text, data.target);
+      return_data = {
+          text: translations[0],
+          id: data.id
+      }
+      io.sockets.emit("translate",return_data);
+  });
+});
 
 app.post("/33892962/Massimo/api/v1/signup", async function (req, res) {
   let username = req.body.username;
@@ -121,6 +137,6 @@ app.get("/33892962/Massimo/api/v1/stats", async function (req, res) {
 
 app.use('/33892962/Massimo/api/v1', pdmaAPIRoutes);
 
-app.listen(PORT_NUMBER, () => {
+server.listen(PORT_NUMBER, () => {
   print(`listening on port ${PORT_NUMBER}`);
 });
