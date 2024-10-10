@@ -10,6 +10,7 @@
             <th>is Allocated</th>
             <th>Driver ID</th>
             <th>Delete Package</th>
+            <th>Driver Information</th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +24,18 @@
             <td>{{ package.package_isAllocated }}</td>
             <td>{{ package.driver_id }}</td>
             <td><button class="btn btn-danger" (click)="deletePackage(package.package_id)" style="margin-bottom: 0;">Delete</button></td>
+            <td>
+                <div type="button" class="dropdown-toggle" data-bs-toggle='dropdown' aria-haspopup="true" aria-expanded="false">Driver</div>
+            <div class="dropdown-menu">
+                <a class="dropdown-item">
+                    <strong>Name:</strong> {{ package.driver_obj.driver_name | uppercase }}<br>
+                    <strong>Driver ID:</strong> {{ package.driver_obj.driver_id }}<br>
+                    <strong>Licence:</strong> {{ package.driver_obj.driver_licence }}<br>
+                    <strong>Department:</strong> {{ package.driver_obj.driver_department }}<br>
+                    <strong>is Active:</strong> {{ package.driver_obj.driver_isActive }}
+                </a>
+            </div>
+            </td>
         </tr>
     </tbody>
 </table>

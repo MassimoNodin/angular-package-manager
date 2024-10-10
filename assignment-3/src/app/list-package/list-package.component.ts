@@ -13,6 +13,7 @@ import { PackageWeightPipe } from '../package-weight.pipe';
 })
 export class ListPackageComponent {
   packages: any = [];
+  drivers: any = [];
   loading = true;
 
   constructor(private databaseService: DatabaseService) {}
@@ -20,6 +21,16 @@ export class ListPackageComponent {
   ngOnInit(): void {
     this.databaseService.getPackages().subscribe((data) => {
       this.packages = data;
+    });
+    this.databaseService.getDrivers().subscribe((data) => {
+      this.drivers = data;
+      for (let i = 0; i < this.packages.length; i++) {
+        for (let j = 0; j < this.drivers.length; j++) {
+          if (this.packages[i].driver_id === this.drivers[j].driver_id) {
+            this.packages[i].driver_obj = this.drivers[j];
+          }
+        }
+      }
       this.loading = false;
     });
   }
