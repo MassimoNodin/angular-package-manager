@@ -11,6 +11,11 @@ const Driver = require('./models/driver');
 const Package = require('./models/package');
 
 
+router.get("/stats", async function (req, res) {
+    let data = (await db.collection('a2-analytics').doc("stats").get()).data();
+    res.json({'insert': data.insert, 'update': data.update, 'delete': data.delete, 'retrieve': data.retrieve});
+  });
+
 router.post('/drivers/add', async function (req, res) {
     try {
         let driver = new Driver({

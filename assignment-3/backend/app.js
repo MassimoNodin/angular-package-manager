@@ -153,24 +153,19 @@ app.get("/33892962/Massimo/api/v1/authenticated", async function (req, res) {
   }
 });
 
-app.use(async (req, res, next) => {
-  if (req.path === "/33892962/Massimo/api/v1/authenticated") {
+function isAuthenticated(req, res, next) {
+  if (req.session.user) {
     return next();
-  }
-
-  if (!req.session.user) {
+  } else {
     res.status(401).json({ "error": "You are not logged in" });
-    return;
   }
-  next();
-});
+}
 
-app.get("/33892962/Massimo/api/v1/stats", async function (req, res) {
-  let data = (await db.collection('a2-analytics').doc("stats").get()).data();
-  res.json({'insert': data.insert, 'update': data.update, 'delete': data.delete, 'retrieve': data.retrieve});
-});
+app.use('/33892962/Massimo/api/v1', isAuthenticated, pdmaAPIRoutes);
 
-app.use('/33892962/Massimo/api/v1', pdmaAPIRoutes);
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/assignment-3/browser/index.html'));
+});
 
 server.listen(PORT_NUMBER, () => {
   print(`listening on port ${PORT_NUMBER}`);
