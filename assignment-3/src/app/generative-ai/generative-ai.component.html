@@ -1,0 +1,24 @@
+<div style="height: 70%; display: flex; justify-content: center; align-items: center;">
+    <form class="card" style="padding: 20px; width: 1000px; display: flex; flex-direction: column;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Distance Calculator (AI)</h2>
+        <table class="table" style="margin-top: 0px;" *ngIf="!loading">
+            <thead class="table">
+                <tr>
+                    <th>Title</th>
+                    <th>Destination</th>
+                    <th>Distance</th>
+                    <th>Calculate Distance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let package of packages">
+                    <td>{{ package.package_title }}</td>
+                    <td>{{ package.package_destination}}</td>
+                    <td id={{package._id}}></td>
+                    <td><button class="btn btn-primary" (click)="calculateDistance(package.package_destination, package._id)"
+                            style="margin-bottom: 0;">Calculate</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
